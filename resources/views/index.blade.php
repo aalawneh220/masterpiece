@@ -114,7 +114,8 @@
 
 
   <section class="hero-section">
-    <div class="card-grid">
+    <link rel="stylesheet" href={{asset("assets/css/card.css")}} />
+    <div class="card-grid" >
       <a class="card" href="#">
         <div class="card__background" style="background-image: url(https://images.pexels.com/photos/7725966/pexels-photo-7725966.jpeg?cs=srgb&dl=pexels-arina-krasnikova-7725966.jpg&fm=jpg&_gl=1*14o4o7f*_ga*MjAzMTc2NDA5Ny4xNjY0NTU2MTI1*_ga_8JE65Q40S6*MTY2ODMyMjEwOS4yMS4xLjE2NjgzMjIxMTAuMC4wLjA.)"></div>
         <div class="card__content">
@@ -228,7 +229,7 @@
                       <div class="price_table_row">null</div>
                       <div class="price_table_row">null</div>                                                
                   </div>
-                  <a href="#" class="btn btn-dark btn-lg btn-block">Subsecribe</a>
+                  <a href="./donate" class="btn btn-dark btn-lg btn-block">Subsecribe</a>
               </div>
           </div>
   
@@ -244,7 +245,7 @@
                       <div class="price_table_row">null</div>
                       <div class="price_table_row">null</div>                                                
                   </div>
-                  <a href="#" class="btn btn-danger btn-lg btn-block">Subsecribe</a>
+                  <a href="./donate" class="btn btn-danger btn-lg btn-block">Subsecribe</a>
               </div>
           </div>
   
@@ -260,7 +261,7 @@
                       <div class="price_table_row">null</div>
                       <div class="price_table_row">null</div>                                                
                   </div>
-                  <a href="#" class="btn btn-royal btn-lg btn-block">Subsecribe</a>
+                  <a href="./donate" class="btn btn-royal btn-lg btn-block">Subsecribe</a>
               </div>
           </div>
   
@@ -269,7 +270,7 @@
               <div class="price_table_container">
                   <div class="price_table_heading">Master</div>
                   <div class="price_table_body">
-                      <div class="price_table_row cost static-bg"><strong>$ 60</strong><span>/MONTH</span></div>
+                      <div class="price_table_row cost static-bg"  value="15" name="amount"><strong>$ 60</strong><span>/MONTH</span></div>
                       <div class="price_table_row">Washing your pet</div>
                       <div class="price_table_row">trim nails your pet</div>
                       <div class="price_table_row">cutting pet hair</div>
@@ -277,7 +278,7 @@
                       <div class="price_table_row">boarding your pet 1 week</div>
                       <div class="price_table_row">sterilize process pet</div>                                                
                   </div>
-                  <a href="#" class="btn btn-static btn-lg btn-block">Subsecribe</a>
+                  <a href="./donate" class="btn btn-static btn-lg btn-block">Subsecribe</a>
               </div>
           </div>
       </div>

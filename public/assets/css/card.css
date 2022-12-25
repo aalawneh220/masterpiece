@@ -1,0 +1,6 @@
+.card:before {
+    content: "";
+    display: block;
+    padding-bottom: 150%;
+    width: 100%;
+}

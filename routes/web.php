@@ -12,6 +12,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\DonationController;
+
+use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\singleController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
 
 Route::get('/', function () {
     return view('index');
@@ -34,18 +53,18 @@ Route::get('/checkout', function () {
 Route::get('/adopt', function () {
     return view('adopt');
 });
-Route::get('/profile', function () {
-    return view('profile');
-});
-Route::get('/shop', function () {
-    return view('shop');
-});
-Route::get('/singlep', function () {
-    return view('singlep');
-});
-Route::get('/singlep', function () {
-    return view('singlep');
-});
+Route::get('/profile', [CustomAuthController::class, 'profile']);
+Route::get('/shop', [ProductController::class, 'index']);
+
+Route::get('/singlep/{id}', [singleController::class, 'index']);
+
 Route::get('/singleadopt', function () {
     return view('singleadopt');
 });
+// visa
+
+Route::get('/donate',  [DonationController::class, 'show']);
+
+Route::post('/donate/details', [DonationController::class, 'store']);
+
+Route::get('/donateshow',  [DonationController::class, 'showWithGet']);
