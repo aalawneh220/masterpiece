@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\singleController;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +33,24 @@ Route::get('registration', [CustomAuthController::class, 'registration'])->name(
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
+Route::get(
+    '/delete/{id}',
+    [CartController::class, 'delete']
+
+);
+
+Route::get(
+    '/update-cart/{id}/{quantity}',
+    [CartController::class, 'update']
+
+);
 
 Route::get('/', function () {
     return view('index');
+});
+Route::get('/dashboard', function () {
+    $p = Product::all();
+    return view('admin', ['p' => $p]);
 });
 Route::get('/about', function () {
     return view('About');
@@ -44,12 +61,9 @@ Route::get('/contact', function () {
 Route::get('/error', function () {
     return view('404');
 });
-Route::get('/cart', function () {
-    return view('cart');
-});
-Route::get('/checkout', function () {
-    return view('checkout');
-});
+Route::get('/cart',   [CartController::class, 'index']);
+Route::post('/add',   [CartController::class, 'store']);
+Route::get('/checkout', [CartController::class, 'checkout']);
 Route::get('/adopt', function () {
     return view('adopt');
 });
@@ -63,7 +77,7 @@ Route::get('/singleadopt', function () {
 });
 // visa
 
-Route::get('/donate',  [DonationController::class, 'show']);
+Route::get('/donate/{id}',  [DonationController::class, 'show']);
 
 Route::post('/donate/details', [DonationController::class, 'store']);
 

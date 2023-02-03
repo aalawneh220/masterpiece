@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('card')->nullable();
             $table->timestamp('date')->nullable();
+            $table->string('sub_id');
 
             $table->float('amount');
             $table->rememberToken();

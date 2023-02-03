@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('quantity');
             $table->binary('image');
-            
+
 
             $table->timestamps();
         });

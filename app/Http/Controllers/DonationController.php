@@ -40,19 +40,12 @@ class DonationController extends Controller
      * @param  \App\Models\Donation  $donation
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
 
         // dd($request->name);
-        if ($request !== null) {
-            return view(
-                'donate',
-                [
-                    'fields' => $request
-                ]
-            );
-        }
-        return view('donate');
+
+        return view('donate', ['id' => $id]);
     }
 
     public function showWithGet()
@@ -80,6 +73,7 @@ class DonationController extends Controller
 
         //store data -> ask for visa if true create record else redirect back
         Donation::create([
+            'sub_id' => $request->sub_id,
             'name' => $request->name,
             'user_id' => $user->id,
             'email' => $request->email,
