@@ -36,15 +36,18 @@
                                     data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="billing-address-form">
-                                            <form action="index.html">
-                                                <p><input type="text" placeholder="Name" /></p>
-                                                <p><input type="email" placeholder="Email" /></p>
-                                                <p><input type="text" placeholder="Address" /></p>
-                                                <p><input type="tel" placeholder="Phone" /></p>
-                                                <p>
-                                                    <textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea>
+                                            <form action="/place" id="formBill" method="post">
+                                                @csrf
+                                                <p><input type="text" placeholder="Name" name="name" required /></p>
+                                                <p><input type="email" placeholder="Email" name="email" required /></p>
+                                                <p><input type="text" placeholder="Address" name="address" required />
                                                 </p>
-                                            </form>
+                                                <p><input type="tel" placeholder="Phone" name="tel" required /></p>
+                                                <p>
+                                                    <textarea name="say" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea>
+                                                </p>
+                                                <button type="submit" style="display: none"></button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +138,9 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="#" class="boxed-btn">Place Order</a>
+                        <a id="placeOrder" class="boxed-btn">Place Order</a>
+                        <input type="text" name="total" hidden value="{{ $sum + 50 }}">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -170,4 +175,11 @@
         </div>
     </div>
     <!-- end logo carousel -->
+    <script>
+        const placeOrder = document.getElementById('placeOrder');
+        const billingAddressForm = document.getElementById('formBill');
+        placeOrder.onclick = () => {
+            billingAddressForm.submit()
+        }
+    </script>
 @endsection

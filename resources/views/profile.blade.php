@@ -31,11 +31,60 @@
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                                 alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 class="my-3">{{ $user['name'] }}</h5>
-                            <p class="text-muted mb-1">Full Stack Developer</p>
-                            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                            <p class="text-muted mb-4">{{ $user['address'] }}</p>
                             <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-primary">Follow</button>
-                                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                                <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog"
+                                    aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h4 class="modal-title w-100 font-weight-bold">Write to us</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="/addpet" method="POST">
+                                                @csrf
+                                                <div class="modal-body mx-3">
+                                                    <div class="md-form mb-5">
+                                                        <input type="text" id="form6Example1" class="form-control"
+                                                            placeholder="name" name="name" />
+                                                    </div>
+
+                                                    <div class="md-form mb-5">
+                                                        <input type="text" id="form6Example4" class="form-control"
+                                                            placeholder="phone" name="phone" />
+                                                    </div>
+
+                                                    <div class="md-form mb-5">
+                                                        <input type="text" id="form6Example5" class="form-control"
+                                                            placeholder="address" name="address" />
+                                                    </div>
+                                                    <div class="md-form mb-5">
+                                                        <textarea class="form-control" id="form6Example7" rows="4" name="desc" placeholder="description"></textarea>
+
+                                                    </div>
+
+                                                    <div class="md-form">
+                                                        <i class="fas fa-pencil prefix grey-text"></i>
+                                                        <input type="text" id="form6Example5" class="form-control"
+                                                            placeholder="image url" name="image" />
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer d-flex justify-content-center">
+                                                    <button class="btn btn-unique" type="submit">Send <i
+                                                            class="fas fa-paper-plane-o ml-1"></i></button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                                <div class="text-center">
+                                    <a href="" class="btn btn-warning btn-rounded mb-4 " data-toggle="modal"
+                                        data-target="#modalContactForm">add pet for adopt</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -92,6 +141,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-12">
                         {{-- {{ dd($sub[0]['created_at']) }} --}}
                         <div class="card mb-4">
@@ -109,7 +159,7 @@
 
                                         if ($sub[0]['sub_id'] == 2) {
                                             $datetime1 = date_create($sub[0]['created_at']);
-                                            $remain = $datetime1->modify('+1 year');
+                                            $remain = $datetime1->modify('+1 month');
                                         }
                                     @endphp
                                     <div class="card-footer text-muted"> End at :

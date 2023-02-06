@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('bill_id')->constrained('bills');
+            $table->foreignId('bill_id')->constrained('bills')->nullable();
             $table->float('total');
             $table->timestamps();
         });

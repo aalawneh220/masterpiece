@@ -27,7 +27,7 @@
         </div>
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                <div class="h-100  p-5" style="background :linear-gradient(45deg, #9e1030, #000000); ">
+                <div class="h-100  p-5" style="background :linear-gradient(45deg, #e46600, #000000); ">
                     <form action="/donate/details" method="post">
                         @csrf
                         <div class="row g-3">
@@ -90,7 +90,7 @@
                             <div>
                                 <label class="pe-5">(mm) Month</label>
                                 <label class="pe-5">(yy) years</label>
-                                <label class="pe-5">cvv</label>
+                                <label class="pe-5 ">cvv</label>
 
                             </div>
                             <br>
@@ -140,14 +140,17 @@
                                 <input type="number" name="amount" class="form-control   border-0"
                                     @php
 $amount=0;
+if($id == 0){
+                                        $amount = 9;
+                                    }
                                     if($id == 1){
-                                        $amount = 39.5;
+                                        $amount = 29;
                                     }
                                     if($id == 2){
-                                        $amount = 99.9;
+                                        $amount = 39;
                                     }
-                                    if($id == 1){
-                                        $amount = 59.9;
+                                    if($id == 3){
+                                        $amount = 60;
                                     } @endphp
                                     placeholder="Enter the amount to be donated" value="{{ $amount }}">
                                 <input type="text" value="{{ $id }}" name="sub_id" hidden>

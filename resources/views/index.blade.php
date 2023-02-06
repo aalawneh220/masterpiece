@@ -12,8 +12,8 @@
                                   <p class="subtitle">Highest Quality</p>
                                   <h1>Quality Care For Pets You'll Love</h1>
                                   <div class="hero-btns">
-                                      <a href="shop.html" class="boxed-btn">Subscribe to Pet Care</a>
-                                      <a href="contact.html" class="bordered-btn">Contact Us</a>
+                                      <a href="/shop" class="boxed-btn">Visit Shop</a>
+                                      <a href="/contact" class="bordered-btn">Contact Us</a>
                                   </div>
                               </div>
                           </div>
@@ -31,8 +31,8 @@
                                   <p class="subtitle">browse pets</p>
                                   <h1>Find your new best friend</h1>
                                   <div class="hero-btns">
-                                      <a href="shop.html" class="boxed-btn">Adopt a Pet</a>
-                                      <a href="contact.html" class="bordered-btn">Contact Us</a>
+                                      <a href="/shop" class="boxed-btn">Visit Shop</a>
+                                      <a href="/contact" class="bordered-btn">Contact Us</a>
                                   </div>
                               </div>
                           </div>
@@ -50,8 +50,8 @@
                                   <p class="subtitle">All you need for your pet</p>
                                   <h1>100% Orginal Collection</h1>
                                   <div class="hero-btns">
-                                      <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                      <a href="contact.html" class="bordered-btn">Contact Us</a>
+                                      <a href="/shop" class="boxed-btn">Visit Shop</a>
+                                      <a href="/contact" class="bordered-btn">Contact Us</a>
                                   </div>
                               </div>
                           </div>
@@ -109,16 +109,16 @@
       <section class="hero-section">
           <link rel="stylesheet" href={{ asset('assets/css/card.css') }} />
           <div class="card-grid">
-              <a class="card" href="#">
+              <a class="card" href="/shop">
                   <div class="card__background"
                       style="background-image: url(https://images.pexels.com/photos/7725966/pexels-photo-7725966.jpeg?cs=srgb&dl=pexels-arina-krasnikova-7725966.jpg&fm=jpg&_gl=1*14o4o7f*_ga*MjAzMTc2NDA5Ny4xNjY0NTU2MTI1*_ga_8JE65Q40S6*MTY2ODMyMjEwOS4yMS4xLjE2NjgzMjIxMTAuMC4wLjA.)">
                   </div>
                   <div class="card__content">
                       <p class="card__category">Category</p>
-                      <h3 class="card__heading">Shop Supplies</h3>
+                      <h3 class="card__heading">Shop</h3>
                   </div>
               </a>
-              <a class="card" href="#">
+              <a class="card" href="/adopt">
                   <div class="card__background"
                       style="background-image: url(https://images.pexels.com/photos/14273114/pexels-photo-14273114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)">
                   </div>
@@ -136,13 +136,13 @@
                       <h3 class="card__heading">Subsecribe</h3>
                   </div>
               </a>
-              <a class="card" href="#">
+              <a class="card" href="/shop">
                   <div class="card__background"
                       style="background-image: url(https://images.pexels.com/photos/933498/pexels-photo-933498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)">
                   </div>
                   <div class="card__content">
                       <p class="card__category">Category</p>
-                      <h3 class="card__heading">Shop Food</h3>
+                      <h3 class="card__heading">Shop</h3>
                   </div>
               </a>
               <div>
@@ -192,7 +192,7 @@
                               animal, as well as any cause of action, claims, suits or demands
                               whatsoever that may arise as a result of such injury or damage.
                           </p>
-                          <a href="about.html" class="boxed-btn mt-4">Read more</a>
+                          <a href="/about" class="boxed-btn mt-4">Read more</a>
                       </div>
                   </div>
               </div>
@@ -227,7 +227,7 @@
                           <div class="price_table_row">null</div>
                           <div class="price_table_row">null</div>
                       </div>
-                      <a href="./donate" class="btn btn-dark btn-lg btn-block">Subsecribe</a>
+                      <a href="./donate/0" class="btn btn-dark btn-lg btn-block">Subsecribe</a>
                   </div>
               </div>
 
@@ -318,105 +318,67 @@
                       </div>
                   </div>
               </div>
-
               <div class="row">
-                  <div class="col-lg-4 col-md-6">
-                      <div class="single-latest-news">
-                          <a href="single-news.html">
-                              <div class="latest-news-bg news-bg-1"></div>
-                          </a>
-                          <div class="news-text-box">
-                              <h3>
-                                  <a href="single-news.html">pone number</a>
-                              </h3>
-
-                              <p class="excerpt">
-                                  Vivamus lacus enim, pulvinar vel nulla sed, scelerisque
-                                  rhoncus nisi. Praesent vitae mattis nunc, egestas viverra
-                                  eros.
-                              </p>
-                              <a href="single-news.html" class="read-more-btn">read more <i
-                                      class="fas fa-angle-right"></i></a>
+                  @foreach ($p->take(3) as $pp)
+                      <style>
+                          .news-bg-6 {
+                              background-image: url({{ $pp['image'] }});
+                          }
+                      </style>
+                      <div class="col-lg-4 col-md-6">
+                          <div class="single-latest-news">
+                              <a href="single-news.html">
+                                  <div class="latest-news-bg news-bg-6"></div>
+                              </a>
+                              <div class="news-text-box">
+                                  <h3>
+                                      <a href="single-news.html">{{ $pp['name'] }}</a>
+                                  </h3>
+                                  <p class="blog-meta">
+                                      <span class="author"><i class="fas fa-user"></i> User</span>
+                                      <span class="date"><i class="fas fa-calendar"></i> {{ $pp['created_at'] }}</span>
+                                      <span class="date"><i class="fas fa-phone"></i> {{ $pp['phone'] }}</span>
+                                  </p>
+                                  <p class="excerpt">
+                                      {{ $pp['desc'] }}
+                                  </p>
+                                  <a href="single-news/{{ $pp['id'] }}" class="read-more-btn">read more <i
+                                          class="fas fa-angle-right"></i></a>
+                              </div>
                           </div>
                       </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6">
-                      <div class="single-latest-news">
-                          <a href="single-news.html">
-                              <div class="latest-news-bg news-bg-2"></div>
-                          </a>
-                          <div class="news-text-box">
-                              <h3>
-                                  <a href="single-news.html">pone number</a>
-                              </h3>
+                  @endforeach
+              </div>
+          </div>
+      </div>
 
-                              <p class="excerpt">
-                                  Vivamus lacus enim, pulvinar vel nulla sed, scelerisque
-                                  rhoncus nisi. Praesent vitae mattis nunc, egestas viverra
-                                  eros.
-                              </p>
-                              <a href="single-news.html" class="read-more-btn">read more <i
-                                      class="fas fa-angle-right"></i></a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6">
-                      <div class="single-latest-news">
-                          <a href="single-news.html">
-                              <div class="latest-news-bg news-bg-3"></div>
-                          </a>
-                          <div class="news-text-box">
-                              <h3>
-                                  <a href="single-news.html">pone number</a>
-                              </h3>
+      <!-- end latest news -->
 
-                              <p class="excerpt">
-                                  Vivamus lacus enim, pulvinar vel nulla sed, scelerisque
-                                  rhoncus nisi. Praesent vitae mattis nunc, egestas viverra
-                                  eros.
-                              </p>
-                              <a href="single-news.html" class="read-more-btn">read more <i
-                                      class="fas fa-angle-right"></i></a>
+      <!-- logo carousel -->
+      <div class="logo-carousel-section">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="logo-carousel-inner">
+                          <div class="single-logo-item">
+                              <img src="assets/img/Royal-Canin-Logo.svg.png" alt="">
                           </div>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="kabseh">
-                          <div class="col-lg-12 text-center">
-                              <a href="news.html" class="boxed-btn">More pets</a>
+                          <div class="single-logo-item">
+                              <img src="assets/img/Whiskas-Logo.png" alt="">
+                          </div>
+                          <div class="single-logo-item">
+                              <img src="assets/img/belcando-logo.png" alt="">
+                          </div>
+                          <div class="single-logo-item">
+                              <img src="assets/img/Logo_HappyPet_Fahne.png" alt="">
+                          </div>
+                          <div class="single-logo-item">
+                              <img src="assets/img/np.png" alt="">
                           </div>
                       </div>
                   </div>
               </div>
           </div>
-
-          <!-- end latest news -->
-
-          <!-- logo carousel -->
-          <div class="logo-carousel-section">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-lg-12">
-                          <div class="logo-carousel-inner">
-                              <div class="single-logo-item">
-                                  <img src="assets/img/Royal-Canin-Logo.svg.png" alt="">
-                              </div>
-                              <div class="single-logo-item">
-                                  <img src="assets/img/Whiskas-Logo.png" alt="">
-                              </div>
-                              <div class="single-logo-item">
-                                  <img src="assets/img/belcando-logo.png" alt="">
-                              </div>
-                              <div class="single-logo-item">
-                                  <img src="assets/img/Logo_HappyPet_Fahne.png" alt="">
-                              </div>
-                              <div class="single-logo-item">
-                                  <img src="assets/img/np.png" alt="">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- end logo carousel -->
-      @endsection
+      </div>
+      <!-- end logo carousel -->
+  @endsection

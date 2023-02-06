@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bill;
 use App\Models\cart;
+use App\Models\Orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -16,6 +19,31 @@ class CartController extends Controller
     {
         $cart = cart::all();
         return view('cart', ['cart' => $cart]);
+    }
+
+
+    public function placeorder(Request $request)
+    {
+
+        $userId = auth()->id();
+        $bill = new bill();
+        $bill->user_id = $userId;
+        $bill->name = $request->name;
+        $bill->email = $request->email;
+        $bill->address = $request->address;
+        $bill->phone = $request->tel;
+        $bill->save();
+
+        $billId = bill::where('user_id', $userId)->first();
+
+        $oreder = new Orders();
+        $oreder->user_id = $userId;
+        $oreder->bill_id = $billId['id'];
+        $oreder->total = $request->total;
+        $oreder->save();
+        $userId = auth()->id();
+        $cart = cart::where('user_id', $userId)->delete();
+        return Redirect::back();
     }
 
     /**
@@ -51,6 +79,7 @@ class CartController extends Controller
         $cart->user_id = $userId;
         $cart->product_id = $request->product_id;
         $cart->price = $request->price;
+        $cart->quantity = 1;
         $cart->save();
         return Redirect()->back();
     }

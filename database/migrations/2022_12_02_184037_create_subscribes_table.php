@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('service');
-            
+
             $table->date('subscription_start_time');
             $table->date('subscription_end_time');
 
             $table->timestamps();
-        
+
         });
     }
 

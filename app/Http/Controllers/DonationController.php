@@ -80,14 +80,10 @@ class DonationController extends Controller
             'amount' => $request->amount,
             'card' => $request->card,
         ]);
-        // session()->flash('message',
-        // 'تم استقبال تبرعك.
-        // جزاك الله خيراً');
+       
         return redirect('/');
 
-        // ->with('message',
-        // 'تم استقبال تبرعك.
-        // جزاك الله خيراً');
+
     }
 
     /**

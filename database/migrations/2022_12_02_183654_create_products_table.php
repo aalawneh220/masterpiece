@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('category');
             $table->string('quantity');
-            $table->binary('image');
+            $table->text('image');
 
 
             $table->timestamps();
